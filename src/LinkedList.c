@@ -258,7 +258,7 @@ int ll_clear(LinkedList* this)
 
     if(this!=NULL)
     {
-    	while(this->size!=0)
+    	while(ll_len(this)!=-1)
     	{
     		ll_remove(this, 0);
     	}
@@ -341,7 +341,7 @@ int ll_isEmpty(LinkedList* this)
     if(this!=NULL)
     {
     	returnAux=1;
-    	if(this->size!=0) //Usar el ll_len
+    	if(ll_len(this)!=-1)
     	{
     		returnAux=0;
     	}
@@ -384,7 +384,7 @@ void* ll_pop(LinkedList* this,int index)
     if(this!=NULL && index>=0 && index<ll_len(this))
     {
     	returnAux=ll_get(this, index);
-    	if(ll_remove(this, index)!=0) //Si pudo eliminar el elemento;
+    	if(ll_remove(this, index)!=0) //Si no pudo eliminar el elemento;
     	{
     		returnAux=NULL;
     	}

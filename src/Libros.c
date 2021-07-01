@@ -276,6 +276,7 @@ void* descuento_libro(void* libro)
 	char auxEditorial[100];
 	float auxPrecioLibro;
 	float precioFinal;
+	float descuento;
 	getPrecio_libro(auxDescuento, &auxPrecioLibro);
 	getEditorial_libro(auxDescuento, auxEditorial);
 
@@ -285,15 +286,17 @@ void* descuento_libro(void* libro)
 		{
 			if(auxPrecioLibro>=300)
 			{
-				precioFinal=auxPrecioLibro*0.2;
+				descuento=auxPrecioLibro*20/100;
+				precioFinal=auxPrecioLibro-descuento;
 				setPrecio_libro(auxDescuento, precioFinal);
 			}
 		}
-		else if(strcmp(auxEditorial, "SIGLO XXI EDITORES:")==0)
+		else if(strcmp(auxEditorial, "SIGLO XXI EDITORES")==0)
 		{
 			if(auxPrecioLibro<=200)
 			{
-				precioFinal=auxPrecioLibro*0.1;
+				descuento=auxPrecioLibro*10/100;
+				precioFinal=auxPrecioLibro-descuento;
 				setPrecio_libro(auxDescuento, precioFinal);
 			}
 		}

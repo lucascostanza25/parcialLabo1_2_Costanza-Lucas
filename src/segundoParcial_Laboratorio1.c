@@ -43,7 +43,6 @@ int main(void) {
 				if(!controller_loadFromText("../Datos.csv", listaLibros))
 				{
 					listaLibrosBackUp=ll_clone(listaLibros);
-					controller_saveAsText("../Datos_backup.csv", listaLibrosBackUp);
 					printf("Archivo cargado con exito!\n");
 					flagArchivo=1;
 				}
@@ -75,6 +74,7 @@ int main(void) {
 				{
 					if(controller_editLibro(listaLibros)!=-1)
 					{
+						listaLibrosBackUp=ll_clone(listaLibros);
 						printf("Libro modificado con exito!\n");
 					}
 					else
@@ -223,6 +223,7 @@ int main(void) {
 								system("cls");
 								if(opcionGuardado==0)
 								{
+									controller_sortLibro(listaLibrosBackUp);
 									if(controller_saveAsText("../mapeado.csv" , listaLibrosBackUp)!=-1)
 									{
 										printf("Archivo guardado con exito!\n");
